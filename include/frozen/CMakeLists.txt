@@ -1,4 +1,6 @@
-cmake_policy(SET CMP0076 OLD)
+if(POLICY CMP0076)
+  cmake_policy(SET CMP0076 OLD)
+endif()
 
 target_sources(frozen INTERFACE
   $<BUILD_INTERFACE:
