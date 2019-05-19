@@ -60,7 +60,9 @@ target_include_directories(frozen INTERFACE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 
-add_subdirectory(include/frozen)
+if (NOT subproject)
+  add_subdirectory(include/frozen)
+endif()
 
 if(frozen.tests)
   add_subdirectory(tests)
