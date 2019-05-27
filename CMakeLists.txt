@@ -44,9 +44,12 @@ CMAKE_DEPENDENT_OPTION(frozen.coverage
 # directory and project header files.
 #
 add_library(frozen INTERFACE)
-add_library(frozen-headers INTERFACE)
 add_library(frozen::frozen ALIAS frozen)
+
+add_library(frozen-headers INTERFACE)
 add_library(frozen::frozen-headers ALIAS frozen-headers)
+
+target_link_libraries(frozen-headers INTERFACE frozen::frozen)
 
 #
 # frozen requires C++ 14 support, at a minimum. Setting the `cxx_std_14` compile
@@ -54,7 +57,6 @@ add_library(frozen::frozen-headers ALIAS frozen-headers)
 # targets linking to frozen
 #
 target_compile_features(frozen INTERFACE cxx_std_14)
-target_compile_features(frozen-headers INTERFACE cxx_std_14)
 
 #
 # The include directory for frozen can be expected to vary between build
