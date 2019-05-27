@@ -1,7 +1,7 @@
 configure_file(
   "${PROJECT_SOURCE_DIR}/cmake/CTestCustom.cmake"
   "${PROJECT_BINARY_DIR}/CTestCustom.cmake"
-  COPYONLY)
+  COPYONLY) 
 
 add_executable(frozen.tests "")
 target_link_libraries(frozen.tests PUBLIC frozen::frozen)
